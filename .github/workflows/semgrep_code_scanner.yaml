@@ -1,0 +1,35 @@
+# https://semgrep.dev/docs/semgrep-ci/sample-ci-configs/#github-actions
+# https://semgrep.dev/docs/semgrep-ci/overview/#other-ci-providers
+# https://hub.docker.com/r/returntocorp/semgrep
+
+name: Semgrep
+on:
+  # Scanning changed files in PRs, and blocking on new issues only (existing issues ignored)
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  codescanner:
+    name: Running Semgrep scan on source code
+    runs-on: [ self-hosted ]
+      # Skip any PR created by dependabot to avoid permission issues
+    if: (github.actor != 'dependabot[bot]')
+    steps:
+      - name: Checkout Semgrep rule repository
+        uses: actions/checkout@v2
+        with:
+          # Internal and private GHE repository containing custom Semgrep rules
+          repository: 'clover/semgrep-rules'
+          ref: main
+          path: semgrep-rules
+          token: ${{ secrets.SEMGREP_API_TOKEN }}
+      
+      - name: Checkout source code
+        uses: actions/checkout@v2
+        with:
+          path: source-code
+
+      - name: Scanning code for potential security issues
+        # Using the returntocorp/semgrep:latest Docker image directly to run a security scan on source code
+        run: |
+          docker run --rm --volume "$GITHUB_WORKSPACE"/source-code:/src --volume "$GITHUB_WORKSPACE"/semgrep-rules:/rules returntocorp/semgrep:latest --exclude=/src/semgrep-rules --config=/rules /src

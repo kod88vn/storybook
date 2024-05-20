@@ -1,0 +1,112 @@
+{
+  "name": "web-app-scheduling",
+  "homepage": "http://jay-quach.github.io/web-app-scheduling",
+  "description": "microapp for appointment booking",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "start": "app-scripts start",
+    "build": "app-scripts build",
+    "build-local": "APP_ID=web-app-scheduling COMMIT_HASH=local app-script build",
+    "serve": "yarn start",
+    "test": "jest",
+    "checks": "echo 'No Checks Defined'",
+    "lint": "concurrently --kill-others-on-fail -n 'lint:ts,lint:css' 'yarn lint:ts' 'yarn lint:css'",
+    "lint:fix": "concurrently -n 'lint:ts,lint:css' 'yarn lint:ts --fix' 'yarn lint:css --fix'",
+    "lint:ts": "eslint 'src/**/*.{ts,tsx}'",
+    "lint:css": "stylelint --syntax scss 'src/**/*.scss' --allow-empty-input",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:storybook/recommended"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{tsx,ts}": "eslint --fix",
+    "*.scss": "stylelint --syntax scss --fix --allow-empty-input",
+    "*.{tsx,ts,js}": "prettier --write"
+  },
+  "dependencies": {
+    "@clover/data-layer": "^1.0.53",
+    "@clover/locales": "^0.1.6",
+    "@clover/types": "v1.2.521",
+    "@devexpress/dx-react-core": "4.0.6",
+    "@devexpress/dx-react-scheduler": "4.0.6",
+    "@devexpress/dx-react-scheduler-material-ui": "4.0.6",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.117",
+    "@mui/material": "^5.15.17",
+    "@mui/x-date-pickers": "^5.0.15",
+    "clsx": "^1.1.1",
+    "dayjs": "^1.11.11",
+    "i18next": "^19.9.2",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-i18next": "^11.8.10",
+    "react-router": "^6.9.0",
+    "react-router-dom": "^6.9.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.4.0",
+    "@clover-microapp/app-scripts": "^1.0.5",
+    "@storybook/addon-essentials": "8.1.0",
+    "@storybook/addon-interactions": "8.1.0",
+    "@storybook/addon-links": "8.1.0",
+    "@storybook/addon-onboarding": "8.1.0",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.2",
+    "@storybook/blocks": "8.1.0",
+    "@storybook/react": "8.1.0",
+    "@storybook/react-webpack5": "8.1.0",
+    "@storybook/test": "8.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/testing-library__jest-dom": "^5.14.0",
+    "concurrently": "^6.0.1",
+    "eslint-plugin-storybook": "^0.8.0",
+    "gh-pages": "^6.1.1",
+    "husky": "4.3.8",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.0.5",
+    "jest-junit": "^14.0.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "lint-staged": ">=10",
+    "prettier": "^2.3.1",
+    "pretty-quick": "^3.1.1",
+    "sass": "^1.32.8",
+    "storybook": "8.1.0",
+    "stylelint": "^13.7.2",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-prettier": "^1.1.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^9.1.1",
+    "typescript": "4.4.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all",
+    "IE >= 11"
+  ]
+}

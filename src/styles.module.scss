@@ -1,0 +1,24 @@
+.main {
+  background: #ffff;
+  padding: 30px 50px;
+}
+
+.heading {
+  border-bottom: 1px solid #c9c9c9;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+}
+
+.congrats {
+  background-color: #22880254;
+  border: 2px solid #22880229;
+  border-radius: 5px;
+  font-family: 'Graphik Light', sans-serif;
+  font-size: 1.125em;
+  margin-top: 20px;
+  padding: 5px 25px;
+
+  p {
+    line-height: 2em;
+  }
+}

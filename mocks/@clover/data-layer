@@ -1,0 +1,25 @@
+import React from 'react';
+
+export const CloverDataLayer = jest.fn();
+export const useRootContext = jest.fn();
+export const useQuery = jest.fn();
+export const cosApi = jest.fn();
+export const useMutation = jest.fn();
+
+export const CLOVER_DATA_LAYER_TEST_ID = 'CloverDataLayer';
+
+beforeEach(() => {
+  [
+    CloverDataLayer,
+    useRootContext,
+    cosApi,
+    useMutation,
+    useQuery,
+  ].forEach(fn => fn.mockClear());
+  CloverDataLayer.mockImplementation(({ loadingFallback, ...props }) =>
+    React.createElement('div', { 'data-testid': CLOVER_DATA_LAYER_TEST_ID, ...props }),
+  );
+  useMutation.mockReturnValue({
+    mutateAsync: jest.fn().mockReturnValue({ id: 'TEST_ID' }),
+  });
+});

@@ -1,0 +1,6 @@
+---
+pipeline_template: templates/Jenkinsfile.web.micro-app-v1.5
+DOCKER_AGENT: gcr.io/clover-container-registries/node-web/node18.12
+DEFAULT_BRANCH_NAME: main
+PACKAGE_NAME: web-app-scheduling
+RELEASE_BRANCH_PREFIX: release/

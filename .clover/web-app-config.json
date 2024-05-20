@@ -1,0 +1,8 @@
+{
+  "name": "Scheduling Service",
+  "remotePackage": "web-app-scheduling",
+  "type": "micro",
+  "exports": {
+    "App": "./src/App"
+  }
+}

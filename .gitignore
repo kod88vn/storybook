@@ -1,0 +1,46 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+.idea/*
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# IntelliJ related files
+# Don't ignore .iml, used for excluding directories from indexing
+/.idea/workspace.xml
+/.idea/usage.statistics.xml
+/.idea/tasks.xml
+/.idea/libraries
+/.idea/encodings.xml
+/.idea/*directories
+/.idea/dictionaries
+
+/.husky/_
+
+# testing
+/coverage
+test-results-*.xml
+test-report.xml
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#conflicts
+.orig
+
+*storybook.log
+storybook-static

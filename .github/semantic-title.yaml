@@ -1,0 +1,17 @@
+---
+statusName: 'Title Prefix'
+successMessage: '<prefix>'
+errorMessage: 'Please add a valid prefix to your PR title'
+errorDetailsLink: 'https://github.corp.clover.com/GHE_OWNER/web-app-scheduling/blob/main/.github/semantic-title.yaml#L7-L17'
+prefixes:
+  - FEAT
+  - FIX
+  - DOCS
+  - REFACTOR
+  - PERF
+  - TEST
+  - BUILD
+  - CI
+  - CHORE
+  - CHERRYPICK
+  - REVERT

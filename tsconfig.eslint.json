@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "incremental": true,
+    "watch": true
+  },
+  "include": [
+    "src/**/*",
+    ".eslintrc.json"
+  ],
+  "exclude": [
+    "jest.config.js"
+  ]
+}
